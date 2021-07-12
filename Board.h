@@ -3,13 +3,13 @@
 class Board{
 private:
     const unsigned char columnMask{0xff};
-    unsigned long long int board;
     const unsigned long long int bottommask;
-    unsigned long long int playedMask;
     const std::array<const unsigned long long int,7> bottomsinglemask
     {0x01,0x01'00,0x01'00'00,0x01'00'00'00,0x01'00'00'00'00
     ,0x01'00'00'00'00'00,0x01'00'00'00'00'00'00};
 public:
+    unsigned long long int board;
+    unsigned long long int playedMask;
     bool playerA;
     Board();
     void Print(bool complete=false)const;
