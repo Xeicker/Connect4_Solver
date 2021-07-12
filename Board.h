@@ -1,3 +1,5 @@
+#ifndef BOARD_H
+#define BOARD_H
 #include <array>
 
 class Board{
@@ -20,3 +22,4 @@ public:
     short CastToWinner(bool win)const
     {return static_cast<short>(playerA)*2-1;};
 };
+#endif
