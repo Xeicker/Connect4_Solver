@@ -2,7 +2,6 @@
 
 class Board{
 private:
-    bool playerA;
     const unsigned char columnMask{0xff};
     unsigned long long int board;
     const unsigned long long int bottommask;
@@ -11,6 +10,7 @@ private:
     {0x01,0x01'00,0x01'00'00,0x01'00'00'00,0x01'00'00'00'00
     ,0x01'00'00'00'00'00,0x01'00'00'00'00'00'00};
 public:
+    bool playerA;
     Board();
     void Print(bool complete=false)const;
     bool PlayMove(unsigned short column);
