@@ -25,7 +25,7 @@ void Board::Print(bool complete) const{
 }
 bool Board::PlayMove(ushort column){
     
-    bool playable = ((playedMask>>(column*8))&columnMask)<0x7f;
+    bool playable = ((playedMask>>(column*8))&columnMask)<0x3f;
     //player represented with 0 plays
     if(playable){
         board ^= playedMask;
