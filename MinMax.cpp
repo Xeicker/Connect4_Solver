@@ -14,7 +14,7 @@ MinMaxResult MinMax::Max(Board& b,const bool playerA=true){
             if(winner==0)
                 winner = std::get<0>(Max(b,!playerA));
             short current =  std::get<0>(m);
-            b.playerA= playerA;
+            b.moves--;
             b.board = baux;
             b.playedMask = bmaskaux;
             if(playerA){
@@ -36,7 +36,7 @@ MinMaxResult MinMax::Max(Board& b,const bool playerA=true){
     return m;
 }
 MinMaxResult MinMax::Solve(Board& b){
-    if(b.playerA){
+    if(b.playerA()){
         return Max(b);
     }
     else{

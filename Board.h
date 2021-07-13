@@ -12,7 +12,9 @@ private:
 public:
     unsigned long long int board;
     unsigned long long int playedMask;
-    bool playerA;
+    short moves;
+    bool playerA()const
+    {return moves&1;};
     Board();
     void Print(bool complete=false)const;
     bool PlayMove(unsigned short column);
@@ -20,6 +22,6 @@ public:
     unsigned long long GetKey()
     {return board+playedMask+bottommask;};
     short CastToWinner(bool win)const
-    {return static_cast<short>(playerA)*2-1;};
+    {return static_cast<short>(playerA())*2-1;};
 };
 #endif

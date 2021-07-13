@@ -9,7 +9,7 @@ using std::bitset;
 Board::Board():
     board(0),
     bottommask(0x01010101010101),
-    playerA(true),
+    moves(0),
     playedMask(0){
 }
 void Board::Print(bool complete) const{
@@ -30,7 +30,7 @@ bool Board::PlayMove(ushort column){
     if(playable){
         playedMask |= bottomsinglemask[column]+playedMask;
         board ^= playedMask;
-        playerA = !playerA; 
+        moves++; 
     }
     return playable;
 }
