@@ -36,32 +36,11 @@ int main(){
 
     b.PlayMove(1);
 
-    b.PlayMove(0); 
 
-    b.PlayMove(4); 
-    b.PlayMove(4); 
-
-    b.PlayMove(6); 
-    b.PlayMove(6); 
-
-    b.PlayMove(5); 
-
-    b.PlayMove(0);
-
-    b.PlayMove(4); 
-
-    b.PlayMove(6);
-
-    b.PlayMove(2); 
-
-    b.PlayMove(0); 
-    b.PlayMove(0); 
-
-    b.PlayMove(2); 
     
     b.Print(true);
     MinMax solver;
-    for(int i = 0; i <=10 && b.Winner()==0; i++){
+    for(int i = 0; i <=30 && b.Winner()==0; i++){
         auto R= solver.Solve(b);
         cout<<std::get<0>(R)<<","<<static_cast<int>(std::get<1>(R))<<endl;
         b.PlayMove(std::get<1>(R));

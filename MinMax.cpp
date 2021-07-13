@@ -5,6 +5,9 @@ MinMaxResult MinMax::Min(Board& b){
     return Max(b,false);
 }
 MinMaxResult MinMax::Max(Board& b,const bool playerA=true,short alpha,short beta){
+    if(b.moves>=42){
+        return std::make_tuple(0,0);
+    }
     auto baux = b.board;
     auto bmaskaux = b.playedMask;
     MinMaxResult m{playerA? -64:64,3};
@@ -18,18 +21,18 @@ MinMaxResult MinMax::Max(Board& b,const bool playerA=true,short alpha,short beta
             b.board = baux;
             b.playedMask = bmaskaux;
             if(playerA){
-                if(score>=current){
+                if(score>alpha){
                     m=std::make_tuple(score,e);
                     alpha = score;
                 }
             }
             else{
-                if(score<current){
+                if(score<beta){
                     beta = score;
                     m=std::make_tuple(score,e);
                 }
             }
-            if(alpha>=beta )
+            if(alpha>=beta)
                 break;   
         }
     }
