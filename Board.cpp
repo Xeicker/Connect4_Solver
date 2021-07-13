@@ -38,23 +38,23 @@ short Board::Winner()const {
     //horizontal win
     uint64_t aux = board&(board>>8);
     if((aux&(aux>>16))>0)
-        return CastToWinner(!playerA);
+        return true;
 
     //diagonal 1 win
     aux = board&(board>>9);
     if((aux&(aux>>18))>0)
-        return CastToWinner(!playerA);
+        return true;
 
     //diagonal 2 win
     aux = board&(board>>7);
     if((aux&(aux>>14))>0)
-        return CastToWinner(!playerA);
+        return true;
 
     //vertical win
     aux = board&(board>>1);
     if((aux&(aux>>2))>0)
-        return CastToWinner(!playerA);
+        return true;
 
     //draw
-    return 0;
+    return false;
 }
