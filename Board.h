@@ -22,7 +22,8 @@ public:
     unsigned long long GetKey()
     {return board+playedMask+bottommask;};
     short CastToWinner(bool win)const
-    {return win?static_cast<short>(playerA())*2-1:0;};
-    short Score()const{};
+    {return win?(static_cast<short>(playerA())<<1)-1:0;};
+    short Score(bool win)const
+    {return Winner()*((1<<6)-moves);};
 };
 #endif
