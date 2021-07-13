@@ -28,9 +28,9 @@ bool Board::PlayMove(ushort column){
     bool playable = ((playedMask>>(column*8))&columnMask)<0x3f;
     //player represented with 0 plays
     if(playable){
-        board ^= playedMask;
         playedMask |= bottomsinglemask[column]+playedMask;
-        playerA != playerA; 
+        board ^= playedMask;
+        playerA = !playerA; 
     }
     return playable;
 }
