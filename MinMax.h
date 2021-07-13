@@ -8,8 +8,8 @@ class MinMax{
 private:
     std::array<char,7> moves
     {3,4,2,5,1,6,0};
-    MinMaxResult Min(Board b);
-    MinMaxResult Max(Board b,bool playerA);
+    MinMaxResult Min(Board& b);
+    MinMaxResult Max(Board& b,bool playerA);
 public:
-    MinMaxResult Solve(Board b);
+    MinMaxResult Solve(Board& b);
 };
