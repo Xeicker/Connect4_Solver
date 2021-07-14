@@ -24,21 +24,10 @@ int main(){
 
     b.PlayMove(5);
     b.PlayMove(5);
-    b.PlayMove(5); 
     b.PlayMove(5);
-    b.PlayMove(5);  
+    b.PlayMove(5);
     
-    b.PlayMove(1);
-
-    b.PlayMove(3);
-
-    b.PlayMove(4);
-
-    b.PlayMove(1);
-
-
     
-    b.Print(true);
     MinMax solver;
     for(int i = 0; i <=30 && b.Winner()==0; i++){
         auto R= solver.Solve(b);

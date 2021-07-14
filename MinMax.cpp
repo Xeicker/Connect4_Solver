@@ -1,6 +1,7 @@
 #include "MinMax.h"
 #include<iostream>
 
+MinMax::MinMax():memo(){};
 MinMaxResult MinMax::Min(Board& b){
     return Max(b,false);
 }
@@ -10,12 +11,19 @@ MinMaxResult MinMax::Max(Board& b,const bool playerA=true,short alpha,short beta
     }
     auto baux = b.board;
     auto bmaskaux = b.playedMask;
+    short savedscore;
     MinMaxResult m{playerA? -64:64,3};
     for(auto &e : moves){
         if(b.PlayMove(static_cast<ushort>(e))){
             short score = b.Score();
-            if(score==0)
-                score = std::get<0>(Max(b,!playerA,alpha,beta));
+            if(score==0){
+                if(memo.TryGet(b,savedscore))
+                    score = savedscore;
+                else{
+                    score = std::get<0>(Max(b,!playerA,alpha,beta));
+                    memo.Add(b,score);
+                }
+            }
             short current =  std::get<0>(m);
             b.moves--;
             b.board = baux;
@@ -36,8 +44,8 @@ MinMaxResult MinMax::Max(Board& b,const bool playerA=true,short alpha,short beta
                 break;   
         }
     }
-
     //std::cout<<std::get<0>(m)<<","<<static_cast<int>(std::get<1>(m))<<std::endl;
+    
     return m;
 }
 MinMaxResult MinMax::Solve(Board& b){

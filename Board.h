@@ -19,7 +19,7 @@ public:
     void Print(bool complete=false)const;
     bool PlayMove(unsigned short column);
     short Winner()const;
-    unsigned long long GetKey()
+    unsigned long long GetKey()const 
     {return board+playedMask+bottommask;};
     short CastToWinner(bool win)const
     {return win?(static_cast<short>(playerA())<<1)-1:0;};
