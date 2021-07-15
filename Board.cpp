@@ -34,7 +34,7 @@ bool Board::PlayMove(ushort column){
     }
     return playable;
 }
-short Board::Winner()const {
+bool Board::Winn()const {
     //horizontal win
     uint64_t aux = board&(board>>8);
     if((aux&(aux>>16))>0)
