@@ -25,16 +25,15 @@ int main(){
     b.PlayMove(5);
     b.PlayMove(5);
     b.PlayMove(5);
-    b.PlayMove(5);
     
     
     MinMax solver;
-    for(int i = 0; i <=30 && b.Winner()==0; i++){
+    for(int i = 0; i <=30 && !b.Winn(); i++){
         auto R= solver.Solve(b);
-        cout<<std::get<0>(R)<<","<<static_cast<int>(std::get<1>(R))<<endl;
+        cout<<static_cast<int>(std::get<0>(R))<<","<<static_cast<int>(std::get<1>(R))<<endl;
         b.PlayMove(std::get<1>(R));
     }
     b.Print(true);
-    cout<<b.Winner()<<endl;
+    cout<<static_cast<int>(b.Winner())<<endl;
     return 0;
 }

@@ -23,13 +23,13 @@ public:
     void Print(bool complete=false)const;
     bool PlayMove(unsigned short column);
     bool Winn()const;
-    char Winner()const
+    unsigned char Winner()const
     {return CastToWinner(Winn());};
     unsigned long long GetKey()const 
     {return board+playedMask+bottommask;};
-    char CastToWinner(bool win)const
+    unsigned char CastToWinner(bool win)const
     {return win?(playerA()?2:0):1;};
-    char Score()const
+    unsigned char Score()const
     {return Winn()?(playerA()?128-moves:moves):64;};
 };
 #endif
