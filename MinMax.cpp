@@ -7,16 +7,16 @@ MinMaxResult MinMax::Min(Board& b){
 }
 MinMaxResult MinMax::Max(Board& b,const bool playerA=true,short alpha,short beta){
     if(b.moves>=42){
-        return std::make_tuple(0,0);
+        return std::make_tuple(DRAW_SCORE,0);
     }
     auto baux = b.board;
     auto bmaskaux = b.playedMask;
     short savedscore;
-    MinMaxResult m{playerA? -64:64,3};
+    MinMaxResult m{playerA? MIN_SCORE:MAX_SCORE,3};
     for(auto &e : moves){
         if(b.PlayMove(static_cast<ushort>(e))){
             short score = b.Score();
-            if(score==0){
+            if(score==DRAW_SCORE){
                 if(memo.TryGet(b,savedscore))
                     score = savedscore;
                 else{
