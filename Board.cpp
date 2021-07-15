@@ -13,9 +13,12 @@ Board::Board():
     playedMask(0){
 }
 void Board::Print(bool complete) const{
+    //prints the board as if it were rotated 90 degrees
     for(int i = 0; i<7; i++){
         cout<<static_cast<bitset<8>>((board>>(i*8))&columnMask)<<endl;
     }
+    //print the played moves so the user know if a 0 is because
+    //there is no move or player 0 has a piece there
     if(complete){
         cout<<endl;
         for(int i = 0; i<7; i++){
@@ -26,9 +29,13 @@ void Board::Print(bool complete) const{
 bool Board::PlayMove(ushort column){
     
     bool playable = ((playedMask>>(column*8))&columnMask)<0x3f;
-    //player represented with 0 plays
+    //player represented with 1 plays
     if(playable){
+        //Adds a piece
         playedMask |= bottomsinglemask[column]+playedMask;
+        //Flips all played positions, including the most recent
+        //which was a 0 because there was nothing there and now it's
+        //1 since player 1 played there
         board ^= playedMask;
         moves++; 
     }

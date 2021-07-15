@@ -17,6 +17,8 @@ public:
     unsigned long long int board;
     unsigned long long int playedMask;
     short moves;
+    //Differenciates first player to second, do not confuse with
+    //player 1 and player 0 on board representation
     bool playerA()const
     {return moves&1;};
     Board();
@@ -29,6 +31,8 @@ public:
     {return board+playedMask+bottommask;};
     unsigned char CastToWinner(bool win)const
     {return win?(playerA()?2:0):1;};
+    //The more moves the nearest score is to 64, this help
+    //with getting the longest loosing solution
     unsigned char Score()const
     {return Winn()?(playerA()?128-moves:moves):64;};
 };
