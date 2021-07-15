@@ -3,7 +3,7 @@
 #include <array>
 #include <tuple>
 
-typedef std::tuple<unsigned char,char> MinMaxResult;
+typedef unsigned short MinMaxResult;
 
 class MinMax{
 private:
